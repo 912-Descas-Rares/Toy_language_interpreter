@@ -1,0 +1,179 @@
+
+ExeStack:
+Composite(Ref(int) v; Composite(new(v,20); Composite(Ref(Ref(int)) a; Composite(new(a,v); Composite(new(v,30); print(rH(rH(a))))))))
+
+SymTable:
+
+Out:
+
+FileTable:
+
+Heap:
+
+
+ExeStack:
+Ref(int) v
+Composite(new(v,20); Composite(Ref(Ref(int)) a; Composite(new(a,v); Composite(new(v,30); print(rH(rH(a)))))))
+
+SymTable:
+
+Out:
+
+FileTable:
+
+Heap:
+
+
+ExeStack:
+Composite(new(v,20); Composite(Ref(Ref(int)) a; Composite(new(a,v); Composite(new(v,30); print(rH(rH(a)))))))
+
+SymTable:
+v=(0, int)
+
+Out:
+
+FileTable:
+
+Heap:
+
+
+ExeStack:
+new(v,20)
+Composite(Ref(Ref(int)) a; Composite(new(a,v); Composite(new(v,30); print(rH(rH(a))))))
+
+SymTable:
+v=(0, int)
+
+Out:
+
+FileTable:
+
+Heap:
+
+
+ExeStack:
+Composite(Ref(Ref(int)) a; Composite(new(a,v); Composite(new(v,30); print(rH(rH(a))))))
+
+SymTable:
+v=(1, int)
+
+Out:
+
+FileTable:
+
+Heap:
+1=20
+
+
+ExeStack:
+Ref(Ref(int)) a
+Composite(new(a,v); Composite(new(v,30); print(rH(rH(a)))))
+
+SymTable:
+v=(1, int)
+
+Out:
+
+FileTable:
+
+Heap:
+1=20
+
+
+ExeStack:
+Composite(new(a,v); Composite(new(v,30); print(rH(rH(a)))))
+
+SymTable:
+a=(0, Ref(int))
+v=(1, int)
+
+Out:
+
+FileTable:
+
+Heap:
+1=20
+
+
+ExeStack:
+new(a,v)
+Composite(new(v,30); print(rH(rH(a))))
+
+SymTable:
+a=(0, Ref(int))
+v=(1, int)
+
+Out:
+
+FileTable:
+
+Heap:
+1=20
+
+
+ExeStack:
+Composite(new(v,30); print(rH(rH(a))))
+
+SymTable:
+a=(2, Ref(int))
+v=(1, int)
+
+Out:
+
+FileTable:
+
+Heap:
+1=20
+2=(1, int)
+
+
+ExeStack:
+new(v,30)
+print(rH(rH(a)))
+
+SymTable:
+a=(2, Ref(int))
+v=(1, int)
+
+Out:
+
+FileTable:
+
+Heap:
+1=20
+2=(1, int)
+
+
+ExeStack:
+print(rH(rH(a)))
+
+SymTable:
+a=(2, Ref(int))
+v=(3, int)
+
+Out:
+
+FileTable:
+
+Heap:
+1=20
+2=(1, int)
+3=30
+
+
+ExeStack:
+
+SymTable:
+a=(2, Ref(int))
+v=(3, int)
+
+Out:
+20
+
+FileTable:
+
+Heap:
+1=20
+2=(1, int)
+3=30
+
