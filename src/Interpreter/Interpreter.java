@@ -23,7 +23,7 @@ public class Interpreter {
     public void do_the_roar() throws MyException {
         IStmt ex1=new CompStmt(new VarDecStmt("v", new IntType()),
                 new CompStmt(new AssignStmt("v", new ValExp(new IntVal(2))), new PrintStmt(new VarExp("v"))));
-        IRepo<ProgState> repo1 = new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log1.txt");
+        IRepo<ProgState> repo1 = new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log1.txt");
         Controller ctr1 = new Controller(repo1);
         ctr1.add(ex1);
 
@@ -31,7 +31,7 @@ public class Interpreter {
                 new CompStmt(new VarDecStmt("b", new IntType()),
                         new CompStmt(new AssignStmt("a", new ArithExp(1, new ValExp(new IntVal(2)), new ArithExp(3, new ValExp(new IntVal(3)), new ValExp(new IntVal(5))))),
                                 new CompStmt(new AssignStmt("b", new ArithExp(1, new VarExp("a"), new ValExp(new IntVal(1)))), new PrintStmt(new VarExp("b"))))));
-        IRepo<ProgState> repo2 = new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log2.txt");
+        IRepo<ProgState> repo2 = new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log2.txt");
         Controller ctr2 = new Controller(repo2);
         ctr2.add(ex2);
         IStmt ex3= new CompStmt(new VarDecStmt("a",new BoolType()),
@@ -39,7 +39,7 @@ public class Interpreter {
                         new CompStmt(new AssignStmt("a", new ValExp(new BoolVal(true))),
                                 new CompStmt(new IfStmt(new VarExp("a"),new AssignStmt("v",new ValExp(new IntVal(2))), new AssignStmt("v", new ValExp(new IntVal(3)))), new PrintStmt(new
                                         VarExp("v"))))));
-        IRepo<ProgState> repo3 = new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log3.txt");
+        IRepo<ProgState> repo3 = new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log3.txt");
         Controller ctr3 = new Controller(repo3);
         ctr3.add(ex3);
 
@@ -54,7 +54,7 @@ public class Interpreter {
                                                         new CompStmt(new ReadFStmt(new VarExp("varf"),"varc"),
                                                                 new CompStmt(new PrintStmt(new VarExp("varc")),
                                                                         new CloseRFStmt(new VarExp("varf"))))))))));
-        IRepo<ProgState> repo4= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log4.txt");
+        IRepo<ProgState> repo4= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log4.txt");
         Controller ctr4 = new Controller(repo4);
         ctr4.add(ex4);
 
@@ -65,7 +65,7 @@ public class Interpreter {
                                 new CompStmt(new NewHStmt("a", new VarExp("v")),
                                         new CompStmt(new PrintStmt(new VarExp("v")),
                                                 new PrintStmt(new VarExp("a")))))));
-        IRepo<ProgState> repo5= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log5.txt");
+        IRepo<ProgState> repo5= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log5.txt");
         Controller ctr5 = new Controller(repo5);
         ctr5.add(ex5);
 
@@ -76,7 +76,7 @@ public class Interpreter {
                                 new CompStmt(new NewHStmt("a", new VarExp("v")),
                                         new CompStmt(new PrintStmt(new ReadHExp(new VarExp("v"))),
                                                 new PrintStmt(new ArithExp(1, new ReadHExp(new ReadHExp(new VarExp("a"))), new ValExp(new IntVal(5)))))))));
-        IRepo<ProgState> repo6= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log6.txt");
+        IRepo<ProgState> repo6= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log6.txt");
         Controller ctr6 = new Controller(repo6);
         ctr6.add(ex6);
 
@@ -86,7 +86,7 @@ public class Interpreter {
                         new CompStmt(new PrintStmt(new ReadHExp(new VarExp("v"))),
                                 new CompStmt(new WriteHStmt("v", new ValExp(new IntVal(30))),
                                         new PrintStmt(new ArithExp(1, new ReadHExp(new VarExp("v")), new ValExp(new IntVal(5))))))));
-        IRepo<ProgState> repo7= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log7.txt");
+        IRepo<ProgState> repo7= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log7.txt");
         Controller ctr7 = new Controller(repo7);
         ctr7.add(ex7);
 
@@ -97,7 +97,7 @@ public class Interpreter {
                                 new CompStmt(new NewHStmt("a", new VarExp("v")),
                                         new CompStmt(new NewHStmt("v", new ValExp(new IntVal(30))),
                                                 new PrintStmt(new ReadHExp(new ReadHExp(new VarExp("a")))))))));
-        IRepo<ProgState> repo8= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log8.txt");
+        IRepo<ProgState> repo8= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log8.txt");
         Controller ctr8 = new Controller(repo8);
         ctr8.add(ex8);
 
@@ -108,7 +108,7 @@ public class Interpreter {
                                 new CompStmt(new PrintStmt(new VarExp("v")),
                                         new AssignStmt("v", new ArithExp(2, new VarExp("v"), new ValExp(new IntVal(1)))))),
                                 new PrintStmt(new VarExp("v")))));
-        IRepo<ProgState> repo9= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\log9.txt");
+        IRepo<ProgState> repo9= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log9.txt");
         Controller ctr9 = new Controller(repo9);
         ctr9.add(ex9);
 
