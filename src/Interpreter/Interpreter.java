@@ -112,6 +112,21 @@ public class Interpreter {
         Controller ctr9 = new Controller(repo9);
         ctr9.add(ex9);
 
+        // Example:   int v; Ref int a; v=10;new(a,22);   fork(wH(a,30);v=32;print(v);print(rH(a)));   print(v);print(rH(a))
+        IStmt ex10= new CompStmt(new VarDecStmt("v", new IntType()),
+                new CompStmt(new VarDecStmt("a", new RefType(new IntType())),
+                        new CompStmt(new AssignStmt("v", new ValExp(new IntVal(10))),
+                                new CompStmt(new NewHStmt("a", new ValExp(new IntVal(22))),
+                                        new CompStmt(new ForkStmt(new CompStmt(new WriteHStmt("a", new ValExp(new IntVal(30))),
+                                                new CompStmt(new AssignStmt("v", new ValExp(new IntVal(32))),
+                                                        new CompStmt(new PrintStmt(new VarExp("v")),
+                                                                new PrintStmt(new ReadHExp(new VarExp("a"))))))),
+                                                new CompStmt(new PrintStmt(new VarExp("v")),
+                                                        new PrintStmt(new ReadHExp(new VarExp("a")))))))));
+        IRepo<ProgState> repo10= new MyRepo<ProgState>("C:\\Users\\Rares\\IdeaProjects\\L3\\logs\\log10.txt");
+        Controller ctr10 = new Controller(repo10);
+        ctr10.add(ex10);
+
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
         menu.addCommand(new RunExample("1",ex1.toString(),ctr1));
@@ -123,6 +138,7 @@ public class Interpreter {
         menu.addCommand(new RunExample("7",ex7.toString(),ctr7));
         menu.addCommand(new RunExample("8",ex8.toString(),ctr8));
         menu.addCommand(new RunExample("9",ex9.toString(),ctr9));
+        menu.addCommand(new RunExample("10",ex10.toString(),ctr10));
         menu.show();
     }
     }

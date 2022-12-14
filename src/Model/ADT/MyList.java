@@ -1,13 +1,13 @@
 package Model.ADT;
 
 
-import java.util.Vector;
+import java.util.*;
 
 public class MyList<T> implements IList<T>{
-    Vector<T> elems;
+    ArrayList<T> elems;
     public MyList()
     {
-        this.elems= new Vector<T>();
+        this.elems= new ArrayList<T>();
 
     }
     @Override
@@ -36,7 +36,7 @@ public class MyList<T> implements IList<T>{
     }
 
     @Override
-    public Vector<T> getAll() {
+    public ArrayList<T> getAll() {
         return elems;
     }
 
@@ -46,5 +46,10 @@ public class MyList<T> implements IList<T>{
         for( T val : elems )
             result = result + (val.toString() + "\n");
         return result;
+    }
+
+
+    public void setContent(List<T> elems) {
+        this.elems= (ArrayList<T>) elems;
     }
 }

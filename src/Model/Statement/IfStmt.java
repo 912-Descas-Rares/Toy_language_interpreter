@@ -37,7 +37,7 @@ public class IfStmt implements IStmt{
             else{
                 elseS.execute(state);
             }
-            return state;
+            return null;
         }
         catch(IOException e){
             throw new MyException(e.getMessage());

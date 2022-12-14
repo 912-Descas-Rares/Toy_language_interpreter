@@ -2,6 +2,7 @@ package Model.ADT;
 
 import Exceptions.MiscException;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -19,4 +20,6 @@ public interface ISmartDict<K,V>{
 
 
     void upload(List<K> freed);
+
+    Collection<Integer> getAllAddresses();
 }

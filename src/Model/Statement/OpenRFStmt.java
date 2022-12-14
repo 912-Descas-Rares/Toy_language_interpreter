@@ -33,7 +33,7 @@ public class OpenRFStmt implements  IStmt{
                     fileTable.put(file, buffer);
                 } else throw new MiscException("You cannot peel a banana twice! ﴾͡๏̯͡๏﴿ ");
             } else throw new TypeException("File name must be a string, you fool! (ง'̀-'́)ง");
-            return state;
+            return null;
         }
         catch (FileNotFoundException e){
             throw new MiscException(e.getMessage());

@@ -32,7 +32,7 @@ public class VarDecStmt implements IStmt{
             else throw new VarException("Weird type, i don't want to deal with it");
         }
         else throw new VarException("You never told me about " +id + " (ﾟ∩ﾟ)");
-        return state;
+        return null;
     }
 
     @Override

@@ -3,7 +3,7 @@ package Model.ADT;
 import java.util.Stack;
 
 public class MyStack<T> implements IStack<T>{
-    int size,capacity;
+    //int size,capacity;
     Stack<T> elems;
 
     public MyStack ()

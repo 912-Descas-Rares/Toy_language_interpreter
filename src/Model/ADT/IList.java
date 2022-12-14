@@ -1,5 +1,7 @@
 package Model.ADT;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public interface IList<T> {
@@ -8,6 +10,7 @@ public interface IList<T> {
     T get(int pos);
     void remove(int pos);
     int size();
-    Vector<T> getAll();
+    ArrayList<T> getAll();
     String toString();
+
 }

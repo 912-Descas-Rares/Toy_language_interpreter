@@ -47,7 +47,7 @@ public class ReadFStmt implements  IStmt{
                 }
                 else throw new TypeException("The file should have a name, you know? (ﾟ∩ﾟ)");
             }else throw new TypeException("Only int variables can be assigned, we still dumb ಠ⌣ಠ");
-            return state;
+            return null;
         }
         catch (IOException e){
             throw new MiscException(e.getMessage());

@@ -2,6 +2,7 @@ package Model.ADT;
 
 import Exceptions.MiscException;
 
+import java.util.Collection;
 import java.util.Map;
 
 public interface IDict<K,V> {
@@ -13,4 +14,6 @@ public interface IDict<K,V> {
     void update(K id, V val);
     String toString();
     Map<K, V> getContent();
+
+    Collection<Integer> getAllAddresses();
 }

@@ -19,7 +19,7 @@ public class PrintStmt implements IStmt{
         MyDict<String, IVal> symTbl= (MyDict<String, IVal>) state.getSymTable();
         SmartDict<Integer, IVal> heap = (SmartDict<Integer, IVal>) state.getHeap();
         state.getOut().add(exp.eval(symTbl,heap));
-        return state;
+        return null;
     }
     @Override
     public String toString(){ return "print(" +exp.toString()+")";}

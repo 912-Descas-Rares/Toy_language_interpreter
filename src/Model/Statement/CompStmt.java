@@ -18,6 +18,6 @@ public class CompStmt implements IStmt{
         MyStack<IStmt> stk=(MyStack<IStmt>) state.getStk();
         stk.push(second);
         stk.push(first);
-        return state;
+        return null;
     }
 }

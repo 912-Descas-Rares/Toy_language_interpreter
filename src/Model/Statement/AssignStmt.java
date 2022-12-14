@@ -35,6 +35,6 @@ public class AssignStmt implements IStmt{
                 throw new TypeException("declared type of variable" + id + " and type of the assigned expression do not match");
         }
         else throw new VarException("the used variable" +id + " was not declared before");
-        return state;
+        return null;
     }
 }

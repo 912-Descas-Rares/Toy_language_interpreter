@@ -38,7 +38,7 @@ public class WriteHStmt implements IStmt{
             else throw new MiscException("Address not defined in heap, lad. Did you run of scotch?");
         }
         else throw new MiscException("Variable not defined or not RefVal. You seem tired. Go home, unwind.");
-        return state;
+        return null;
     }
     
     @Override

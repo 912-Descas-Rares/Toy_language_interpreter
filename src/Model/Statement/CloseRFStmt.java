@@ -37,7 +37,7 @@ public class CloseRFStmt implements IStmt{
                     fileTable.remove(s);
                 } else throw new MiscException("File not in file table, maybe look in another one? What a mess");
             } else throw new TypeException("File name should be a string, you know?");
-            return state;
+            return null;
         }
         catch (IOException e){
             throw new MiscException(e.getMessage());

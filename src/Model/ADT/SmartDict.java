@@ -1,10 +1,11 @@
 package Model.ADT;
 
 import Exceptions.MiscException;
+import Model.Type.RefType;
+import Model.Value.IVal;
+import Model.Value.RefVal;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.lang.Integer;
 
 public class SmartDict<K extends Integer, V> implements ISmartDict<K , V> {
@@ -74,5 +75,16 @@ public class SmartDict<K extends Integer, V> implements ISmartDict<K , V> {
         for(K key: freed){
             free.push(key);
         }
+    }
+
+    @Override
+    public Collection<Integer> getAllAddresses() {
+        List<Integer> addresses = new ArrayList<Integer>() {
+        };
+        for (   Map.Entry<K, V> entry : elems.entrySet()) {
+           addresses.add(entry.getKey());
+
+        }
+        return addresses;
     }
 }

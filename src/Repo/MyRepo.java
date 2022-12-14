@@ -8,14 +8,16 @@ import Model.Statement.IStmt;
 import Model.Value.IVal;
 
 import java.io.*;
-import java.util.Vector;
+import java.util.ArrayList;
 
-public class MyRepo<T> implements IRepo<T>{
-
+public class MyRepo<T> implements IRepo<T> {
+    int thread_id=1;
     MyList<T> elems;
+    MyList<ProgState> threads;
     String filename;
     public MyRepo(String filename) {
         this.elems = new MyList<T>();
+        this.threads = new MyList<ProgState>();
         this.filename=filename;
     }
 
@@ -25,9 +27,10 @@ public class MyRepo<T> implements IRepo<T>{
     }
 
     @Override
-    public Vector<T> getAll() {
+    public ArrayList<T> getAll() {
         return elems.getAll();
     }
+
 
     @Override
     public T get(int i) throws Exception {
@@ -50,15 +53,16 @@ public class MyRepo<T> implements IRepo<T>{
     }
 
     @Override
-    public void logPrgStateExec() throws MyException {
+    public void logPrgStateExec(ProgState prog) throws MyException {
         try {
-            ProgState prog = (ProgState) getCrtPrg();
+            //ProgState prog = (ProgState) getCrtPrg();
             MyStack<IStmt> ExeStack = (MyStack<IStmt>) prog.getStk();
             MyDict<String, IVal> SymTable = (MyDict<String, IVal>) prog.getSymTable();
             MyList<IVal> OutList =(MyList<IVal>) prog.getOut();
             MyDict<String, BufferedReader> FileTable =( MyDict<String, BufferedReader>) prog.getFileTable();
             SmartDict<Integer,IVal> Heap = (SmartDict<Integer, IVal>) prog.getHeap();
             PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(filename, true)));
+            logFile.println("Id: " + prog.getId());
             logFile.println("");
             logFile.println("ExeStack:");
             logFile.println(ExeStack.toString());
@@ -75,6 +79,30 @@ public class MyRepo<T> implements IRepo<T>{
         catch( IOException e){
             throw new MiscException(e.getMessage());
         }
+    }
+
+    @Override
+    public MyList<ProgState> getThreads() {
+        return threads;
+    }
+
+
+    @Override
+    public void addThreads(ProgState prog){
+        prog.setId(thread_id);
+        threads.add(prog);
+        thread_id++;
+    }
+
+    @Override
+    public void setThreads(MyList<ProgState> thr) {
+        for(ProgState e : thr.getAll()){
+            if(e.getId()==0){
+                e.setId(thread_id);
+                thread_id++;
+            }
+        }
+        this.threads = thr;
     }
 
     @Override

@@ -37,7 +37,7 @@ public class NewHStmt implements IStmt{
         }
         else throw new TypeException("Variable not defined in symbol table, lad. Did you run of scotch?");
 
-        return state;
+        return null;
     }
     @Override
     public String toString(){

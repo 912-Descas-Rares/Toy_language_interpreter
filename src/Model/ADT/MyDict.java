@@ -1,9 +1,11 @@
 package Model.ADT;
 
 import Exceptions.MiscException;
+import Model.Type.RefType;
+import Model.Value.IVal;
+import Model.Value.RefVal;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MyDict<K,V> implements IDict<K,V>{
 
@@ -53,5 +55,23 @@ public class MyDict<K,V> implements IDict<K,V>{
     @Override
     public Map<K, V> getContent() {
         return elems;
+    }
+
+    @Override
+    public Collection<Integer> getAllAddresses() {
+        List<Integer> addresses = new ArrayList<Integer>() {
+        };
+        for (   Map.Entry<K, V> entry : elems.entrySet()) {
+            IVal val = (IVal) entry.getValue();
+            if (val.getType().equals(new RefType(null))) {
+
+                addresses.add(((RefVal) val).getAddr());
+            }
+        }
+        return addresses;
+    }
+
+    public void setContent(Map<K, V> elems) {
+        this.elems= (HashMap<K, V>) elems;
     }
 }

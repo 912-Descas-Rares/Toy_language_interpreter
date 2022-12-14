@@ -76,3 +76,146 @@ FileTable:
 
 Heap:
 
+#DELETE FROM HERE _____________________________________________________________
+
+Id: 0
+
+ExeStack:
+Composite(int v; Composite(v=2; print(v)))
+
+SymTable:
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+int v
+Composite(v=2; print(v))
+
+SymTable:
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+int v
+Composite(v=2; print(v))
+
+SymTable:
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+Composite(v=2; print(v))
+
+SymTable:
+v=0
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+Composite(v=2; print(v))
+
+SymTable:
+v=0
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+v=2
+print(v)
+
+SymTable:
+v=0
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+v=2
+print(v)
+
+SymTable:
+v=0
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+print(v)
+
+SymTable:
+v=2
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+print(v)
+
+SymTable:
+v=2
+
+Out:
+
+FileTable:
+
+Heap:
+
+Id: 0
+
+ExeStack:
+
+SymTable:
+v=2
+
+Out:
+2
+
+FileTable:
+
+Heap:
+

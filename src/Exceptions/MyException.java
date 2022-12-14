@@ -10,4 +10,7 @@ public class MyException extends Throwable implements IException{
     public String what() {
         return this.msg;
     }
+    public String getMessage() {
+        return this.msg;
+    }
 }
