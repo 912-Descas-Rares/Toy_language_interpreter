@@ -5,6 +5,8 @@ import Model.ADT.SmartDict;
 import Model.Expression.IExp;
 import Exceptions.*;
 import Model.ProgramState.ProgState;
+import Model.Type.BoolType;
+import Model.Type.IType;
 import Model.Value.BoolVal;
 import Model.Value.IVal;
 
@@ -41,6 +43,19 @@ public class IfStmt implements IStmt{
         }
         catch(IOException e){
             throw new MyException(e.getMessage());
+        }
+    }
+
+    @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType typeExp = exp.typecheck(typeEnv);
+        if(typeExp.equals(new BoolType())){
+            thenS.typecheck(typeEnv);
+            elseS.typecheck(typeEnv);
+            return typeEnv;
+        }
+        else{
+            throw new MyException("The condition of IF has not the type bool. I don't know what you had in mind.");
         }
     }
 }

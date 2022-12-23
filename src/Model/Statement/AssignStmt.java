@@ -37,4 +37,15 @@ public class AssignStmt implements IStmt{
         else throw new VarException("the used variable" +id + " was not declared before");
         return null;
     }
-}
+
+    @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType typeVar = typeEnv.lookup(id);
+        IType typeExp = exp.typecheck(typeEnv);
+        if (typeVar.equals(typeExp))
+            return typeEnv;
+        else
+            throw new TypeException("Variable is not of value type, don't drink and drive!");
+    }
+    }
+

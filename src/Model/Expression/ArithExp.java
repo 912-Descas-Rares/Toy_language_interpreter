@@ -3,6 +3,7 @@ package Model.Expression;
 import Model.ADT.MyDict;
 import Exceptions.*;
 import Model.ADT.SmartDict;
+import Model.Type.IType;
 import Model.Type.IntType;
 import Model.Value.IVal;
 import Model.Value.IntVal;
@@ -45,6 +46,23 @@ public class ArithExp implements IExp{
                 throw new ArithException("second operand is not an integer");
         }
             throw new ArithException("first operand is not an integer");
+    }
+
+    @Override
+    public IType typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType t1=e1.typecheck(typeEnv),t2=e2.typecheck(typeEnv);
+        if(t1.equals(new IntType()))
+        {
+            if(t2.equals(new IntType()))
+            {
+                return new IntType();
+            }
+            else
+                throw new TypeException("second operand is not an integer, dummy");
+        }
+        else
+            throw new TypeException("first operand is not an integer, Archimedes");
+
     }
 
     @Override

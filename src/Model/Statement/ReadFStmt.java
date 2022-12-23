@@ -7,6 +7,7 @@ import Model.ADT.MyDict;
 import Model.ADT.SmartDict;
 import Model.Expression.IExp;
 import Model.ProgramState.ProgState;
+import Model.Type.IType;
 import Model.Type.IntType;
 import Model.Type.StringType;
 import Model.Value.IVal;
@@ -53,6 +54,19 @@ public class ReadFStmt implements  IStmt{
             throw new MiscException(e.getMessage());
         }
     }
+
+    @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType type = exp.typecheck(typeEnv);
+        if(type.equals(new StringType())){
+            if(typeEnv.isDefined(varName) && typeEnv.lookup(varName).equals(new IntType())){
+                return typeEnv;
+            }
+            else throw new TypeException("Only int variables can be assigned, we still dumb ಠ⌣ಠ");
+        }
+        else throw new TypeException("The file should have a name, you know? (ﾟ∩ﾟ)");
+    }
+
     @Override
     public String toString() {
         return "readFile("+exp.toString()+','+varName+")";

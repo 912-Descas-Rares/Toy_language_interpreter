@@ -36,6 +36,12 @@ public class VarDecStmt implements IStmt{
     }
 
     @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        typeEnv.put(id,type);
+        return typeEnv;
+    }
+
+    @Override
     public String toString() {
         return type.toString() +" "+id;
     }

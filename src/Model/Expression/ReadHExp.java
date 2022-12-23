@@ -3,6 +3,7 @@ package Model.Expression;
 import Exceptions.MyException;
 import Model.ADT.MyDict;
 import Model.ADT.SmartDict;
+import Model.Type.IType;
 import Model.Type.RefType;
 import Model.Value.IVal;
 import Model.Value.RefVal;
@@ -26,6 +27,17 @@ public class ReadHExp implements IExp{
         }
         else throw new MyException("Variable ref type and expression ref type are not the same. Not ideal, sir, not ideal.");
     }
+
+    @Override
+    public IType typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType type = exp.typecheck(typeEnv);
+        if(type instanceof RefType){
+            RefType refType = (RefType)type;
+            return refType.getInner();
+        }
+        else throw new MyException("How did a non ref value get into a read heap expression? Something's off and i can feel it.");
+    }
+
     @Override
     public String toString() {
         return "rH(" + exp.toString()  + ")";

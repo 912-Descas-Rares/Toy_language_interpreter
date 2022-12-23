@@ -4,6 +4,7 @@ import Model.ADT.MyDict;
 import Exceptions.*;
 import Model.ADT.SmartDict;
 import Model.Type.BoolType;
+import Model.Type.IType;
 import Model.Type.IntType;
 import Model.Value.BoolVal;
 import Model.Value.IVal;
@@ -33,6 +34,22 @@ public class LogicExp implements IExp {
                 throw new ArithException("second operand is not an boolean");
         }
         throw new ArithException("first operand is not an boolean");
+    }
+
+    @Override
+    public IType typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType t1=e1.typecheck(typeEnv),t2=e2.typecheck(typeEnv);
+if(t1.equals(new BoolType()))
+        {
+            if(t2.equals(new BoolType()))
+            {
+                return new BoolType();
+            }
+            else
+                throw new ArithException("second operand is not an boolean, you are not even speaking false");
+        }
+        else
+            throw new ArithException("first operand is not an boolean, idk what witchery you are doing");
     }
 
     @Override

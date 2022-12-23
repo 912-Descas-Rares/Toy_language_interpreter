@@ -5,6 +5,7 @@ import Model.ADT.*;
 import Model.Expression.IExp;
 import Model.ProgramState.ProgState;
 import Model.Type.BoolType;
+import Model.Type.IType;
 import Model.Value.BoolVal;
 import Model.Value.IVal;
 
@@ -37,6 +38,17 @@ public class WhileStmt implements IStmt {
             return null;
         } else {
             throw new MyException("Condition is not a boolean, BOO");
+        }
+    }
+
+    @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType typeExp = exp.typecheck(typeEnv);
+        if (typeExp.equals(new BoolType())) {
+            stmt.typecheck(typeEnv);
+            return typeEnv;
+        } else {
+            throw new MyException("The condition of WHILE is not of bool type. I don't know what you had in mind.");
         }
     }
 

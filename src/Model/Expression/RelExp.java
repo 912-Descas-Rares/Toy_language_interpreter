@@ -4,6 +4,7 @@ import Exceptions.*;
 import Model.ADT.MyDict;
 import Model.ADT.SmartDict;
 import Model.Type.BoolType;
+import Model.Type.IType;
 import Model.Type.IntType;
 import Model.Value.BoolVal;
 import Model.Value.IVal;
@@ -67,6 +68,17 @@ public class RelExp implements IExp{
 
         } else throw new TypeException("Types not compatible! Non-orthodox!");
 
+    }
+
+    @Override
+    public IType typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType t1 = e1.typecheck(typeEnv);
+        IType t2 = e2.typecheck(typeEnv);
+        if (t1.equals(new IntType()) && t2.equals(new IntType())) {
+            return new BoolType();
+        } else if (t1.equals(new BoolType()) && t2.equals(new BoolType())) {
+            return new BoolType();
+        } else throw new TypeException("Types not compatible! You never stop impressing me!");
     }
 
     @Override

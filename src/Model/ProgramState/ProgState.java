@@ -37,7 +37,7 @@ public class ProgState {
         }
     public ProgState oneStep() throws MyException {
         try{
-            if(exeStack.isEmpty()) throw  new MiscException("Program State stack is empty");
+            if(exeStack.isEmpty()) throw  new MiscException("Program State stack is empty like my soul");
             IStmt  crtStmt = exeStack.pop();
             return crtStmt.execute(this);
         }

@@ -7,6 +7,7 @@ import Model.ADT.MyDict;
 import Model.ADT.SmartDict;
 import Model.Expression.IExp;
 import Model.ProgramState.ProgState;
+import Model.Type.IType;
 import Model.Type.RefType;
 import Model.Value.IVal;
 import Model.Value.RefVal;
@@ -40,7 +41,18 @@ public class WriteHStmt implements IStmt{
         else throw new MiscException("Variable not defined or not RefVal. You seem tired. Go home, unwind.");
         return null;
     }
-    
+
+    @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType typeVar = typeEnv.lookup(var_name);
+        IType typeExp = exp.typecheck(typeEnv);
+        if (typeVar.equals(new RefType(typeExp)))
+            return typeEnv;
+        else
+            throw new TypeException("Variable is not of value type, don't drink and drive!");
+    }
+
+
     @Override
     public String toString() {
         return "WriteHeap(" + var_name + ", " + exp.toString() + ")";

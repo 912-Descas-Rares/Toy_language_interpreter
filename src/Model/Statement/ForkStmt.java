@@ -6,6 +6,7 @@ import Model.ADT.IStack;
 import Model.ADT.MyDict;
 import Model.ADT.MyStack;
 import Model.ProgramState.ProgState;
+import Model.Type.IType;
 import Model.Value.IVal;
 import Model.Value.StringVal;
 
@@ -35,5 +36,11 @@ public class ForkStmt  implements IStmt{
                 stmt,
                 state.getFileTable(),
                 state.getHeap());
+    }
+
+    @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        stmt.typecheck(typeEnv);
+        return typeEnv;
     }
 }

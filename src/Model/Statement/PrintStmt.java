@@ -5,6 +5,7 @@ import Model.ADT.SmartDict;
 import Model.Expression.IExp;
 import Exceptions.*;
 import Model.ProgramState.ProgState;
+import Model.Type.IType;
 import Model.Value.IVal;
 
 public class PrintStmt implements IStmt{
@@ -21,6 +22,13 @@ public class PrintStmt implements IStmt{
         state.getOut().add(exp.eval(symTbl,heap));
         return null;
     }
+
+    @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        exp.typecheck(typeEnv);
+        return  typeEnv;
+    }
+
     @Override
     public String toString(){ return "print(" +exp.toString()+")";}
 }

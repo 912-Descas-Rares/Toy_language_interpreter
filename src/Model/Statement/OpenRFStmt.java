@@ -7,6 +7,7 @@ import Model.ADT.MyDict;
 import Model.ADT.SmartDict;
 import Model.Expression.IExp;
 import Model.ProgramState.ProgState;
+import Model.Type.IType;
 import Model.Type.StringType;
 import Model.Value.IVal;
 import Model.Value.StringVal;
@@ -40,6 +41,16 @@ public class OpenRFStmt implements  IStmt{
         }
 
     }
+
+    @Override
+    public MyDict<String, IType> typecheck(MyDict<String, IType> typeEnv) throws MyException {
+        IType type = exp.typecheck(typeEnv);
+        if(type.equals(new StringType())){
+            return typeEnv;
+        }
+        else throw new TypeException("File name should be a string, you know?");
+    }
+
     @Override
     public String toString() {
         return "openRFile("+exp.toString()+")";
